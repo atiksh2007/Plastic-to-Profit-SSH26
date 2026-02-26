@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import ListingCard from '../components/ListingCard';
 import { mockListings, plasticTypes } from '../data/mockListings';
-
+import { useNavigate } from 'react-router-dom';
 const Marketplace = () => {
   const [listings, setListings] = useState(mockListings);
   const [filteredListings, setFilteredListings] = useState(mockListings);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [sortBy, setSortBy] = useState('date');
+
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     filterAndSortListings();
@@ -103,7 +106,7 @@ const Marketplace = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search by type, location, or seller..."
+                  placeholder="Input your search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="input-field pl-12"
@@ -140,9 +143,9 @@ const Marketplace = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> 
 
-            {/* Sort By */}
+          
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Sort By
@@ -278,9 +281,7 @@ const Marketplace = () => {
                 All sellers are verified and materials are quality-checked. Make an offer on any listing 
                 to start negotiating. Your offers are tracked in your dashboard.
               </p>
-              <a href="#support" className="text-olive-600 font-semibold hover:text-olive-700 transition-colors">
-                Learn more about safe trading →
-              </a>
+              <button  onClick={() => navigate("/SafeTrading")}>Learn More About Trading</button>
             </div>
           </div>
         </div>

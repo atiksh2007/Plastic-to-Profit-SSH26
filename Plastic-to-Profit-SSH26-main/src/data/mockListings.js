@@ -7,7 +7,7 @@ export const mockListings = [
     location: "Bhopal, Madhya Pradesh",
     seller: "ABC Waste Co.",
     description: "Clean, sorted PET bottles from beverage collection",
-    date: "2024-02-20",
+    date: "2026-02-20",
     quality: "High",
     image: "🔄"
   },
@@ -19,7 +19,7 @@ export const mockListings = [
     location: "Mumbai, Maharashtra",
     seller: "GreenCycle Industries",
     description: "Mixed HDPE containers from household collection",
-    date: "2024-02-19",
+    date: "2026-02-19",
     quality: "Medium",
     image: "📦"
   },
@@ -31,7 +31,7 @@ export const mockListings = [
     location: "Delhi NCR",
     seller: "BuildCycle Recyclers",
     description: "Construction waste PVC pipes and fittings",
-    date: "2024-02-18",
+    date: "2026-02-18",
     quality: "High",
     image: "🔧"
   },
@@ -43,7 +43,7 @@ export const mockListings = [
     location: "Bangalore, Karnataka",
     seller: "EcoWaste Solutions",
     description: "Industrial LDPE films and packaging materials",
-    date: "2024-02-17",
+    date: "2026-02-17",
     quality: "High",
     image: "📄"
   },
@@ -55,7 +55,7 @@ export const mockListings = [
     location: "Chennai, Tamil Nadu",
     seller: "Southern Recyclers",
     description: "Polypropylene packaging and containers",
-    date: "2024-02-16",
+    date: "2026-02-16",
     quality: "Medium",
     image: "📦"
   },
@@ -67,7 +67,7 @@ export const mockListings = [
     location: "Pune, Maharashtra",
     seller: "FoamCycle Pvt Ltd",
     description: "Expanded polystyrene foam packaging",
-    date: "2024-02-15",
+    date: "2026-02-15",
     quality: "Medium",
     image: "🎯"
   },
@@ -79,7 +79,7 @@ export const mockListings = [
     location: "Hyderabad, Telangana",
     seller: "Metro Waste Management",
     description: "Sorted PET bottles from retail collection points",
-    date: "2024-02-14",
+    date: "2026-02-14",
     quality: "High",
     image: "🔄"
   },
@@ -91,7 +91,7 @@ export const mockListings = [
     location: "Ahmedabad, Gujarat",
     seller: "Gujarat Green Ltd",
     description: "Industrial HDPE containers and drums",
-    date: "2024-02-13",
+    date: "2026-02-13",
     quality: "High",
     image: "📦"
   },
@@ -103,7 +103,7 @@ export const mockListings = [
     location: "Kolkata, West Bengal",
     seller: "East Recycle Co",
     description: "PP packaging from food industry",
-    date: "2024-02-12",
+    date: "2026-02-12",
     quality: "Medium",
     image: "📦"
   },
@@ -115,7 +115,7 @@ export const mockListings = [
     location: "Jaipur, Rajasthan",
     seller: "Desert Recyclers",
     description: "Agricultural LDPE films and sheets",
-    date: "2024-02-11",
+    date: "2026-02-11",
     quality: "Medium",
     image: "📄"
   },
@@ -127,7 +127,7 @@ export const mockListings = [
     location: "Lucknow, Uttar Pradesh",
     seller: "UP Construction Recyclers",
     description: "Residential construction PVC waste",
-    date: "2024-02-10",
+    date: "2026-02-10",
     quality: "High",
     image: "🔧"
   },
@@ -139,29 +139,29 @@ export const mockListings = [
     location: "Indore, Madhya Pradesh",
     seller: "Central Waste Solutions",
     description: "Mixed PET bottles from municipal collection",
-    date: "2024-02-09",
+    date: "2026-02-09",
     quality: "Medium",
     image: "🔄"
   }
 ];
 
 export const plasticTypes = [
-  { value: "all", label: "All Types" },
-  { value: "PET", label: "PET Bottles" },
-  { value: "HDPE", label: "HDPE Containers" },
-  { value: "PVC", label: "PVC Pipes" },
-  { value: "LDPE", label: "LDPE Films" },
-  { value: "PP", label: "PP Packaging" },
-  { value: "PS", label: "PS Foam" }
+  { value: "all", label: "All Types" ,quantity:"50"},
+  { value: "PET", label: "PET Bottles" ,quantity:"50"},
+  { value: "HDPE", label: "HDPE Containers" ,quantity:"50"},
+  { value: "PVC", label: "PVC Pipes" ,quantity:"50"},
+  { value: "LDPE", label: "LDPE Films",quantity:"50" },
+  { value: "PP", label: "PP Packaging", quantity:"50" },
+  { value: "PS", label: "PS Foam"  ,quantity:"50"}
 ];
 
 export const mockStats = {
-  totalListed: 8750,
+  totalListed: 1000,
   activeListings: 12,
-  totalUsers: 248,
-  completedTransactions: 156,
-  totalWeight: "127,500 kg",
-  co2Saved: "382,500 kg"
+  totalUsers: 1000,
+  completedTransactions: 150,
+  totalWeight: "10000 kg",
+  co2Saved: "10000kg"
 };
 
 export const mockOffers = [
@@ -171,7 +171,8 @@ export const mockOffers = [
     buyerName: "RecycleTech Industries",
     offerPrice: 22,
     status: "pending",
-    date: "2024-02-21"
+    date: "2026-02-21",
+    
   },
   {
     id: 2,
@@ -179,7 +180,7 @@ export const mockOffers = [
     buyerName: "Green Solutions Ltd",
     offerPrice: 26,
     status: "accepted",
-    date: "2024-02-20"
+    date: "2026-02-20"
   },
   {
     id: 3,
@@ -187,6 +188,46 @@ export const mockOffers = [
     buyerName: "EcoPlast Manufacturing",
     offerPrice: 19,
     status: "pending",
-    date: "2024-02-19"
+    date: "2026-02-19"
   }
 ];
+
+
+export const plasticDetails = {
+  PET: {
+    description: "Polyethylene Terephthalate is commonly used for water and beverage bottles.",
+    recyclability: "Highly recyclable",
+    commonUses: "Water bottles, soft drink bottles, food containers",
+    quantity:"50"
+  },
+  HDPE: {
+    description: "High-Density Polyethylene is strong and durable plastic.",
+    recyclability: "Widely recyclable",
+    commonUses: "Milk jugs, detergent bottles, pipes",
+    quantity:"50"
+  },
+  PVC: {
+    description: "Polyvinyl Chloride is used in construction and piping.",
+    recyclability: "Limited recyclability",
+    commonUses: "Pipes, cables, flooring",
+    quantity:"50"
+  },
+  LDPE: {
+    description: "Low-Density Polyethylene is flexible plastic.",
+    recyclability: "Moderate recyclability",
+    commonUses: "Plastic bags, films, wraps",
+    quantity:"50"
+  },
+  PP: {
+    description: "Polypropylene is heat-resistant plastic.",
+    recyclability: "Recyclable",
+    commonUses: "Food containers, packaging, caps",
+    quantity:"50"
+  },
+  PS: {
+    description: "Polystyrene is lightweight plastic foam.",
+    recyclability: "Difficult to recycle",
+    commonUses: "Foam cups, packaging materials",
+    quantity:"50"
+  }
+};

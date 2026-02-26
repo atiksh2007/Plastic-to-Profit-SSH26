@@ -27,7 +27,7 @@ const Login = () => {
       return;
     }
 
-    // Store user in localStorage
+
     const user = {
       email,
       name: email.split('@')[0],
@@ -97,7 +97,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="input-field"
-                placeholder="you@example.com"
+                placeholder="Enter your email"
               />
             </div>
 
@@ -109,12 +109,11 @@ const Login = () => {
                 id="password"
                 name="password"
                 type="password"
-                autoComplete="current-password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="input-field"
-                placeholder="••••••••"
+                placeholder="Password"
               />
             </div>
 
@@ -198,7 +197,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Demo credentials info */}
+        {/* Demo credentials info
         <div className="bg-olive-50 rounded-2xl p-6 opacity-0 animate-fadeIn delay-400">
           <div className="flex items-start">
             <div className="flex-shrink-0">
@@ -213,7 +212,7 @@ const Login = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

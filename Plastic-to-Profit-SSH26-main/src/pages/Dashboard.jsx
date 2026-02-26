@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,10 +9,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar, Pie } from 'react-chartjs-2';
-import StatsCard from '../components/StatsCard';
-import { mockListings, mockStats } from '../data/mockListings';
+} from "chart.js";
+import { Bar, Pie } from "react-chartjs-2";
+import StatsCard from "../components/StatsCard";
+import { mockListings, mockStats } from "../data/mockListings";
 
 // Register ChartJS components
 ChartJS.register(
@@ -22,7 +22,7 @@ ChartJS.register(
   ArcElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const Dashboard = () => {
@@ -31,26 +31,23 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is logged in
-    const storedUser = localStorage.getItem('plasticProfitUser');
+    const storedUser = localStorage.getItem("plasticProfitUser");
     if (!storedUser) {
-      navigate('/login');
+      navigate("/login");
       return;
     }
     setUser(JSON.parse(storedUser));
 
-    // Load offers from localStorage
-    const storedOffers = localStorage.getItem('plasticProfitOffers');
+    const storedOffers = localStorage.getItem("plasticProfitOffers");
     if (storedOffers) {
       setOffers(JSON.parse(storedOffers));
     }
   }, [navigate]);
 
-  // Prepare data for charts
   const getPlasticTypeData = () => {
     const typeCounts = {};
     mockListings.forEach((listing) => {
-      const type = listing.type.split(' ')[0]; // Get first word (PET, HDPE, etc.)
+      const type = listing.type.split(" ")[0];
       typeCounts[type] = (typeCounts[type] || 0) + listing.quantity;
     });
 
@@ -58,16 +55,16 @@ const Dashboard = () => {
       labels: Object.keys(typeCounts),
       datasets: [
         {
-          label: 'Quantity (kg)',
+          label: "Quantity (kg)",
           data: Object.values(typeCounts),
           backgroundColor: [
-            'rgba(85, 107, 47, 0.8)',
-            'rgba(85, 107, 47, 0.6)',
-            'rgba(85, 107, 47, 0.4)',
-            'rgba(85, 107, 47, 0.3)',
-            'rgba(85, 107, 47, 0.2)',
+            "rgba(85, 107, 47, 0.8)",
+            "rgba(85, 107, 47, 0.6)",
+            "rgba(85, 107, 47, 0.4)",
+            "rgba(85, 107, 47, 0.3)",
+            "rgba(85, 107, 47, 0.2)",
           ],
-          borderColor: 'rgba(85, 107, 47, 1)',
+          borderColor: "rgba(85, 107, 47, 1)",
           borderWidth: 2,
         },
       ],
@@ -77,7 +74,7 @@ const Dashboard = () => {
   const getPieChartData = () => {
     const typeCounts = {};
     mockListings.forEach((listing) => {
-      const type = listing.type.split(' ')[0];
+      const type = listing.type.split(" ")[0];
       typeCounts[type] = (typeCounts[type] || 0) + 1;
     });
 
@@ -85,16 +82,16 @@ const Dashboard = () => {
       labels: Object.keys(typeCounts),
       datasets: [
         {
-          label: 'Number of Listings',
+          label: "Number of Listings",
           data: Object.values(typeCounts),
           backgroundColor: [
-            'rgba(85, 107, 47, 0.9)',
-            'rgba(122, 139, 100, 0.9)',
-            'rgba(179, 189, 165, 0.9)',
-            'rgba(209, 215, 200, 0.9)',
-            'rgba(232, 235, 227, 0.9)',
+            "rgba(85, 107, 47, 0.9)",
+            "rgba(122, 139, 100, 0.9)",
+            "rgba(179, 189, 165, 0.9)",
+            "rgba(209, 215, 200, 0.9)",
+            "rgba(232, 235, 227, 0.9)",
           ],
-          borderColor: '#ffffff',
+          borderColor: "#ffffff",
           borderWidth: 3,
         },
       ],
@@ -106,7 +103,7 @@ const Dashboard = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'bottom',
+        position: "bottom",
         labels: {
           padding: 20,
           font: {
@@ -116,7 +113,7 @@ const Dashboard = () => {
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
         padding: 12,
         titleFont: {
           size: 14,
@@ -136,7 +133,7 @@ const Dashboard = () => {
       y: {
         beginAtZero: true,
         grid: {
-          color: 'rgba(0, 0, 0, 0.05)',
+          color: "rgba(0, 0, 0, 0.05)",
         },
         ticks: {
           font: {
@@ -180,7 +177,7 @@ const Dashboard = () => {
               </p>
             </div>
             <button
-              onClick={() => navigate('/marketplace')}
+              onClick={() => navigate("/marketplace")}
               className="btn-primary"
             >
               Browse Listings
@@ -206,14 +203,14 @@ const Dashboard = () => {
           />
           <StatsCard
             icon="✅"
-            value={offers.filter(o => o.status === 'accepted').length}
+            value={offers.filter((o) => o.status === "accepted").length}
             label="Completed Deals"
             trend={20}
             delay={0.3}
           />
           <StatsCard
             icon="📈"
-            value={`₹${offers.reduce((sum, o) => sum + (o.offerPrice * o.quantity), 0).toLocaleString()}`}
+            value={`₹${offers.reduce((sum, o) => sum + o.offerPrice * o.quantity, 0).toLocaleString()}`}
             label="Total Value"
             trend={15}
             delay={0.4}
@@ -246,10 +243,12 @@ const Dashboard = () => {
         {/* Your Offers Section */}
         <div className="bg-white rounded-2xl shadow-lg p-8 opacity-0 animate-fadeInUp delay-400">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-black">Your Recent Offers</h2>
+            <h2 className="text-2xl font-bold text-black">
+              Your Recent Offers
+            </h2>
             {offers.length > 0 && (
               <span className="px-4 py-2 bg-olive-50 text-olive-700 rounded-full text-sm font-semibold">
-                {offers.length} {offers.length === 1 ? 'Offer' : 'Offers'}
+                {offers.length} {offers.length === 1 ? "Offer" : "Offers"}
               </span>
             )}
           </div>
@@ -259,28 +258,53 @@ const Dashboard = () => {
               <table className="w-full">
                 <thead>
                   <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-4 font-semibold text-gray-700">Listing</th>
-                    <th className="text-left py-4 px-4 font-semibold text-gray-700">Quantity</th>
-                    <th className="text-left py-4 px-4 font-semibold text-gray-700">Your Offer</th>
-                    <th className="text-left py-4 px-4 font-semibold text-gray-700">Total</th>
-                    <th className="text-left py-4 px-4 font-semibold text-gray-700">Status</th>
-                    <th className="text-left py-4 px-4 font-semibold text-gray-700">Date</th>
+                    <th className="text-left py-4 px-4 font-semibold text-gray-700">
+                      Listing
+                    </th>
+                    <th className="text-left py-4 px-4 font-semibold text-gray-700">
+                      Quantity
+                    </th>
+                    <th className="text-left py-4 px-4 font-semibold text-gray-700">
+                      Your Offer
+                    </th>
+                    <th className="text-left py-4 px-4 font-semibold text-gray-700">
+                      Total
+                    </th>
+                    <th className="text-left py-4 px-4 font-semibold text-gray-700">
+                      Status
+                    </th>
+                    <th className="text-left py-4 px-4 font-semibold text-gray-700">
+                      Date
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {offers.map((offer) => (
-                    <tr key={offer.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <tr
+                      key={offer.id}
+                      className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                    >
                       <td className="py-4 px-4">
                         <div>
-                          <div className="font-semibold text-black">{offer.listingType}</div>
-                          <div className="text-sm text-gray-600">{offer.seller}</div>
+                          <div className="font-semibold text-black">
+                            {offer.listingType}
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            {offer.seller}
+                          </div>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-gray-900">{offer.quantity} kg</td>
+                      <td className="py-4 px-4 text-gray-900">
+                        {offer.quantity} kg
+                      </td>
                       <td className="py-4 px-4">
                         <div>
-                          <div className="font-semibold text-olive-600">₹{offer.offerPrice}/kg</div>
-                          <div className="text-xs text-gray-500">Original: ₹{offer.originalPrice}/kg</div>
+                          <div className="font-semibold text-olive-600">
+                            ₹{offer.offerPrice}/kg
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Original: ₹{offer.originalPrice}/kg
+                          </div>
                         </div>
                       </td>
                       <td className="py-4 px-4 font-semibold text-black">
@@ -289,17 +313,20 @@ const Dashboard = () => {
                       <td className="py-4 px-4">
                         <span
                           className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
-                            offer.status === 'accepted'
-                              ? 'bg-green-100 text-green-700'
-                              : offer.status === 'rejected'
-                              ? 'bg-red-100 text-red-700'
-                              : 'bg-yellow-100 text-yellow-700'
+                            offer.status === "accepted"
+                              ? "bg-green-100 text-green-700"
+                              : offer.status === "rejected"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-yellow-100 text-yellow-700"
                           }`}
                         >
-                          {offer.status.charAt(0).toUpperCase() + offer.status.slice(1)}
+                          {offer.status.charAt(0).toUpperCase() +
+                            offer.status.slice(1)}
                         </span>
                       </td>
-                      <td className="py-4 px-4 text-gray-600 text-sm">{offer.date}</td>
+                      <td className="py-4 px-4 text-gray-600 text-sm">
+                        {offer.date}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -322,12 +349,14 @@ const Dashboard = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-black mb-2">No offers yet</h3>
+              <h3 className="text-xl font-bold text-black mb-2">
+                No offers yet
+              </h3>
               <p className="text-gray-600 mb-6">
                 Start exploring the marketplace and make your first offer
               </p>
               <button
-                onClick={() => navigate('/marketplace')}
+                onClick={() => navigate("/marketplace")}
                 className="btn-primary"
               >
                 Browse Listings
@@ -346,7 +375,10 @@ const Dashboard = () => {
             <p className="text-olive-100 mb-4">
               Start selling your plastic waste to verified recyclers
             </p>
-            <button className="text-white font-semibold hover:underline">
+            <button
+              onClick={() => navigate("/ListPlastics")}
+              className="text-white font-semibold hover:underline"
+            >
               Create Listing →
             </button>
           </div>
